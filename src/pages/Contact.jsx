@@ -25,6 +25,7 @@ export default function Contact() {
           access_key: "ddce7a3c-b239-40a1-bce5-92c4ca28bc63",
           subject: `New Portfolio Message from ${formData.name}`,
           from_name: "Jenish.dev Portfolio",
+          replyto: formData.email,
           name: formData.name,
           email: formData.email,
           message: formData.message,
