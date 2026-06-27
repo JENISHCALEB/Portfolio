@@ -6,15 +6,45 @@ import './Contact.css'
 export default function Contact() {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' })
   const [submitted, setSubmitted] = useState(false)
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [errorMsg, setErrorMsg] = useState('')
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    // Simulated submission
-    setSubmitted(true)
-    setTimeout(() => {
-      setSubmitted(false)
-      setFormData({ name: '', email: '', message: '' })
-    }, 3000)
+    setIsSubmitting(true)
+    setErrorMsg('')
+    
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          access_key: import.meta.env.VITE_WEB3FORMS_ACCESS_KEY,
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+        }),
+      });
+      
+      const result = await response.json();
+      
+      if (result.success) {
+        setSubmitted(true)
+        setTimeout(() => {
+          setSubmitted(false)
+          setFormData({ name: '', email: '', message: '' })
+        }, 5000)
+      } else {
+        setErrorMsg(result.message || "Something went wrong. Please try again.")
+      }
+    } catch (error) {
+      setErrorMsg("Failed to send message. Please check your connection.")
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   const handleChange = (e) => {
@@ -181,9 +211,15 @@ export default function Contact() {
                   />
                 </div>
 
-                <button type="submit" className="btn btn-primary form-submit-btn">
+                {errorMsg && (
+                  <div className="form-error-msg" style={{ color: '#EF4444', fontSize: '0.85rem', marginBottom: '10px' }}>
+                    {errorMsg}
+                  </div>
+                )}
+
+                <button type="submit" className="btn btn-primary form-submit-btn" disabled={isSubmitting}>
                   <Send size={16} />
-                  Send Message
+                  {isSubmitting ? 'Sending...' : 'Send Message'}
                 </button>
               </form>
             )}
