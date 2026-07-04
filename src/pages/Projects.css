@@ -261,66 +261,19 @@
 }
 
 .card-project-desc {
-  font-size: 0.88rem;
+  font-size: 0.9rem;
   color: var(--text-muted);
-  line-height: 1.5;
-  margin-bottom: 16px;
+  line-height: 1.6;
   flex-grow: 1;
+  transition: color 0.3s ease;
 }
 
-.card-project-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  margin-bottom: 20px;
-}
-
-.tag-pill-subtle {
-  font-size: 0.72rem;
-  font-weight: 600;
-  background: rgba(255, 255, 255, 0.05);
-  color: var(--text-secondary);
-  padding: 3px 8px;
-  border-radius: var(--radius-sm);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-.card-project-actions {
-  display: flex;
-  gap: 12px;
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
-  padding-top: 16px;
-}
-
-.btn-card-link-red {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 0.82rem;
-  font-weight: 700;
-  color: #FFFFFF;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-
-.btn-card-link-red:hover {
+.movie-card:hover .card-project-title {
   color: var(--accent-red);
 }
 
-.btn-card-link-subtle {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 0.82rem;
-  font-weight: 700;
-  color: var(--text-muted);
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  transition: color var(--transition-fast);
-}
-
-.btn-card-link-subtle:hover {
-  color: #FFFFFF;
+.movie-card:hover .card-project-desc {
+  color: var(--text-secondary);
 }
 
 .empty-search-msg {

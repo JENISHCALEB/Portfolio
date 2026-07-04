@@ -57,11 +57,12 @@
   font-size: 0.85rem;
   font-weight: 500;
   color: #E5E5E5;
-  transition: color var(--transition-fast);
+  transition: all var(--transition-smooth);
 }
 
 .navbar-link:hover {
   color: #FFFFFF;
+  transform: translateY(-2px);
 }
 
 .navbar-link.active {
@@ -135,4 +136,12 @@
   .navbar-mobile-toggle {
     display: flex;
   }
+}
+
+.navbar-custom-logo {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  margin-right: -4px;
+  mix-blend-mode: lighten; /* Ensures the black background perfectly disappears into the dark navbar */
 }

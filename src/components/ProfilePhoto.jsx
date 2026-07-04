@@ -2,7 +2,7 @@ import { useRef, useState } from 'react'
 import { motion } from 'framer-motion'
 import './ProfilePhoto.css'
 
-export default function ProfilePhoto({ size = 'lg', animate = true, tilt = true, className = '' }) {
+export default function ProfilePhoto({ size = 'lg', animate = true, tilt = true, className = '', imgSrc = '/images/jenish-profile-new.jpg' }) {
   const ref = useRef(null)
   const [tiltStyle, setTiltStyle] = useState({})
 
@@ -39,7 +39,7 @@ export default function ProfilePhoto({ size = 'lg', animate = true, tilt = true,
     return (
       <div className={`profile-photo-sm ${className}`}>
         <img
-          src="/images/jenish-profile-new.jpg"
+          src={imgSrc}
           alt="Jenish Caleb V"
           width={dimension}
           height={dimension}
@@ -55,9 +55,9 @@ export default function ProfilePhoto({ size = 'lg', animate = true, tilt = true,
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
       style={tiltStyle}
-      animate={animate ? { y: [0, -12, 0] } : {}}
+      animate={animate ? { y: [0, -18, 0] } : {}}
       transition={animate ? {
-        duration: 4,
+        duration: 6,
         repeat: Infinity,
         ease: 'easeInOut',
       } : {}}
@@ -69,7 +69,7 @@ export default function ProfilePhoto({ size = 'lg', animate = true, tilt = true,
       <div className="profile-border-ring">
         <div className="profile-image-container">
           <img
-            src="/images/jenish-profile-new.jpg"
+            src={imgSrc}
             alt="Jenish Caleb V"
             width={dimension}
             height={dimension}

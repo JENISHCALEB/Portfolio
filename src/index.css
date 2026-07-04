@@ -55,6 +55,7 @@ html {
 body {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   background: var(--bg-primary);
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.02'/%3E%3C/svg%3E");
   color: var(--text-primary);
   line-height: 1.5;
   overflow-x: hidden;
@@ -137,19 +138,22 @@ button {
 
 /* ===== CINEMATIC CARDS ===== */
 .cinematic-card {
-  background: var(--bg-card);
+  background: rgba(24, 24, 24, 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-sm);
+  border-radius: var(--radius-md);
   transition: all var(--transition-smooth);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
   position: relative;
   overflow: hidden;
 }
 
 .cinematic-card:hover {
-  transform: translateY(-8px) scale(1.03);
-  border-color: var(--border-hover);
-  box-shadow: var(--glow-crimson), var(--shadow-cinematic);
+  transform: translateY(-8px) scale(1.02);
+  background: rgba(30, 30, 30, 0.8);
+  border-color: rgba(229, 9, 20, 0.5);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.7), 0 0 20px rgba(229, 9, 20, 0.2);
   z-index: 10;
 }
 
@@ -176,6 +180,35 @@ button {
   background: var(--accent-red-hover);
   transform: scale(1.05);
   box-shadow: var(--glow-crimson);
+}
+
+.btn-primary:active {
+  transform: scale(0.98);
+}
+
+.btn-download-premium {
+  background: rgba(20, 20, 20, 0.8);
+  color: white;
+  border: 1px solid rgba(255, 46, 46, 0.5);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Spring-like transition fallback */
+}
+
+.btn-download-premium:hover {
+  border-color: var(--accent-red);
+  box-shadow: 0 0 20px rgba(255, 46, 46, 0.4), inset 0 0 10px rgba(255, 46, 46, 0.1);
+  transform: scale(1.05);
+}
+
+.btn-download-premium:active {
+  transform: scale(0.95);
+}
+
+@media (max-width: 600px) {
+  .btn-download-premium {
+    width: 100%;
+    justify-content: center;
+  }
 }
 
 .btn-outline {

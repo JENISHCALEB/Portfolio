@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
-import { Mail, Github, Linkedin, Instagram, Youtube, Send } from 'lucide-react'
+import { Mail, Github, Linkedin, Instagram, Youtube, Send, Download } from 'lucide-react'
 import './Contact.css'
 
 export default function Contact() {
@@ -78,7 +78,7 @@ export default function Contact() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
             >
-              Let's build<br />something.
+              Let's Build Something<br />Amazing Together.
             </motion.h1>
             
             {/* Big bold email display */}
@@ -146,6 +146,29 @@ export default function Contact() {
               >
                 <Youtube size={20} />
               </a>
+            </motion.div>
+
+            {/* Resume CTA */}
+            <motion.div 
+              className="contact-resume-cta"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.5 }}
+              style={{ marginTop: '3rem' }}
+            >
+              <h3 style={{ fontSize: '1.2rem', marginBottom: '1rem', color: 'var(--text-primary)' }}>Interested in working together?</h3>
+              <motion.a 
+                href="/Resume.pdf" 
+                download="Jenish_Caleb_Resume.pdf"
+                className="btn btn-download-premium"
+                style={{ display: 'inline-flex', width: 'auto' }}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                transition={{ type: "spring", stiffness: 400, damping: 10 }}
+              >
+                <Download size={18} />
+                Download Resume
+              </motion.a>
             </motion.div>
           </div>
 

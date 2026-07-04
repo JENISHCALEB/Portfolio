@@ -1,15 +1,15 @@
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import { Play, Info, Linkedin, BrainCircuit, Code2, Cpu } from 'lucide-react'
+import { Play, Info, Linkedin, BrainCircuit, Code2, Cpu, Download } from 'lucide-react'
 import ProfilePhoto from '../components/ProfilePhoto'
 import './Home.css'
 
 const fadeUp = {
-  hidden: { opacity: 0, y: 40 },
+  hidden: { opacity: 0, y: 30 },
   visible: (i = 0) => ({
     opacity: 1,
     y: 0,
-    transition: { delay: i * 0.15, duration: 0.8, ease: [0.16, 1, 0.3, 1] },
+    transition: { delay: i * 0.1, duration: 0.8, ease: [0.16, 1, 0.3, 1] },
   }),
 }
 
@@ -67,6 +67,13 @@ export default function Home() {
             <motion.p className="hero-role" variants={fadeUp} initial="hidden" animate="visible" custom={2}>
               Computer Science Student
             </motion.p>
+            
+            <motion.div className="hero-badges" variants={fadeUp} initial="hidden" animate="visible" custom={2.5}>
+              <span className="glass-badge">B.Tech CSE @ Karunya Institute</span>
+              <span className="glass-badge">AI & Machine Learning</span>
+              <span className="glass-badge">Azure & AWS Certified</span>
+              <span className="glass-badge">Tuticorin, India</span>
+            </motion.div>
             <motion.p className="hero-tagline" variants={fadeUp} initial="hidden" animate="visible" custom={3}>
               Learning • Building • Exploring Technology
             </motion.p>
@@ -79,17 +86,24 @@ export default function Home() {
                 <Play size={18} fill="currentColor" />
                 View Projects
               </Link>
-              <Link to="/contact" className="btn btn-outline hero-btn-info">
-                <Info size={18} />
-                Contact Me
-              </Link>
+              <motion.a 
+                href="/Resume.pdf" 
+                download="Jenish_Caleb_Resume.pdf"
+                className="btn btn-download-premium"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                transition={{ type: "spring", stiffness: 400, damping: 10 }}
+              >
+                <Download size={18} />
+                Download Resume
+              </motion.a>
             </motion.div>
             <motion.div className="hero-socials" variants={fadeUp} initial="hidden" animate="visible" custom={6}>
               <a
                 href="https://www.linkedin.com/in/jenish-caleb-v/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hero-social-icon"
+                className="hero-social-icon hero-social-linkedin"
                 aria-label="LinkedIn"
               >
                 <Linkedin size={20} />

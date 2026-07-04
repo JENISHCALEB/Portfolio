@@ -34,7 +34,7 @@ const projects = [
     category: 'AI',
     icon: <FlaskConical size={24} />,
     color: '#EC4899',
-    image: 'https://images.unsplash.com/photo-1559757175-5700dde675bc?q=80&w=600&auto=format&fit=crop', // X-ray/biology look
+    image: 'https://images.unsplash.com/photo-1559757175-5700dde675bc?q=80&w=600&auto=format&fit=crop', // Original image
     github: 'https://github.com/JENISHCALEB'
   },
   {
@@ -44,7 +44,7 @@ const projects = [
     category: 'Hardware',
     icon: <Cpu size={24} />,
     color: '#06B6D4',
-    image: 'https://images.unsplash.com/photo-1563720223185-11003d516935?q=80&w=600&auto=format&fit=crop', // EV/car look
+    image: 'https://images.unsplash.com/photo-1560958089-b8a1929cea89?q=80&w=600&auto=format&fit=crop', // Tesla Model 3
     github: 'https://github.com/JENISHCALEB'
   },
   {
@@ -54,7 +54,7 @@ const projects = [
     category: 'Web',
     icon: <Code2 size={24} />,
     color: '#8B5CF6',
-    image: 'https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?q=80&w=600&auto=format&fit=crop', // Clean car side view
+    image: '/images/innova-wedding.png', // Innova wedding car
     github: 'https://github.com/JENISHCALEB'
   },
 ]
@@ -160,17 +160,6 @@ export default function Projects() {
                 <div className="card-body">
                   <h3 className="card-project-title">{project.title}</h3>
                   <p className="card-project-desc">{project.description}</p>
-                  <div className="card-project-tags">
-                    {project.tags.map((tag) => (
-                      <span key={tag} className="tag-pill-subtle">{tag}</span>
-                    ))}
-                  </div>
-                  <div className="card-project-actions">
-                    <Link to="/contact" className="btn-card-link-red">
-                      <Play size={12} fill="currentColor" />
-                      Details
-                    </Link>
-                  </div>
                 </div>
               </motion.div>
             ))}

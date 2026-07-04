@@ -47,14 +47,14 @@ const achievements = [
     subtitle: 'Aarogya Sahayak AI',
     detail: 'Developed Aarogya Sahayak AI, an AI-powered healthcare assistance application at Karunya Institute of Technology and Sciences.',
     icon: <BrainCircuit size={24} />,
-    color: 'var(--accent-purple)',
+    color: '#F97316', // Orange – hackathon energy
   },
   {
     title: 'Google Cloud Digital Campus 2.0 – HackSprint',
     subtitle: 'University Class Timetable Generator',
     detail: 'Developed the University Class Timetable Generating Mobile Application, gaining practical experience in cloud technologies, teamwork, and problem-solving.',
     icon: <CloudLightning size={24} />,
-    color: 'var(--accent-blue)',
+    color: '#4285F4', // Google Blue
   },
 ]
 
@@ -93,7 +93,7 @@ export default function About() {
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.3, duration: 0.6 }}
             >
-              <ProfilePhoto size="md" animate={false} tilt={true} />
+              <ProfilePhoto size="md" animate={false} tilt={true} imgSrc="/images/jenish-profile-about.jpg" />
             </motion.div>
             <motion.div
               className="about-text"
@@ -111,6 +111,32 @@ export default function About() {
                 as a developer. I'm currently open to internship opportunities, collaborations,
                 and learning experiences.
               </p>
+              
+              <div className="about-summary-cards">
+                <motion.div className="summary-card cinematic-card" whileHover={{ scale: 1.05 }} transition={{ type: "spring", stiffness: 300 }}>
+                  <GraduationCap size={20} className="summary-icon" />
+                  <h4>Education</h4>
+                  <p>B.Tech CSE at KITS</p>
+                </motion.div>
+                
+                <motion.div className="summary-card cinematic-card" whileHover={{ scale: 1.05 }} transition={{ type: "spring", stiffness: 300 }}>
+                  <BrainCircuit size={20} className="summary-icon" />
+                  <h4>Interests</h4>
+                  <p>AI, Full Stack, Cloud</p>
+                </motion.div>
+                
+                <motion.div className="summary-card cinematic-card" whileHover={{ scale: 1.05 }} transition={{ type: "spring", stiffness: 300 }}>
+                  <Trophy size={20} className="summary-icon" />
+                  <h4>Leadership</h4>
+                  <p>Olympic Torch Bearer</p>
+                </motion.div>
+                
+                <motion.div className="summary-card cinematic-card" whileHover={{ scale: 1.05 }} transition={{ type: "spring", stiffness: 300 }}>
+                  <Award size={20} className="summary-icon" />
+                  <h4>Certifications</h4>
+                  <p>Azure & AWS</p>
+                </motion.div>
+              </div>
             </motion.div>
           </div>
         </div>

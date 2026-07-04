@@ -8,6 +8,8 @@ import Projects from './pages/Projects'
 import Skills from './pages/Skills'
 import CodingProfiles from './pages/CodingProfiles'
 import Contact from './pages/Contact'
+import Experience from './pages/Experience'
+import Certifications from './pages/Certifications'
 
 function App() {
   const location = useLocation()
@@ -25,9 +27,11 @@ function App() {
           <Routes location={location} key={location.pathname}>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
+            <Route path="/experience" element={<Experience />} />
             <Route path="/projects" element={<Projects />} />
             <Route path="/skills" element={<Skills />} />
             <Route path="/coding-profiles" element={<CodingProfiles />} />
+            <Route path="/certifications" element={<Certifications />} />
             <Route path="/contact" element={<Contact />} />
           </Routes>
         </AnimatePresence>

@@ -8,8 +8,10 @@ import './Navbar.css'
 const navLinks = [
   { path: '/', label: 'Home' },
   { path: '/about', label: 'About' },
+  { path: '/experience', label: 'Experience' },
   { path: '/projects', label: 'Projects' },
   { path: '/skills', label: 'Skills' },
+  { path: '/certifications', label: 'Certifications' },
   { path: '/coding-profiles', label: 'Coding Profiles' },
   { path: '/contact', label: 'Contact' },
 ]
@@ -33,9 +35,9 @@ export default function Navbar() {
     <nav className={`navbar ${scrolled ? 'navbar-scrolled' : ''}`}>
       <div className="navbar-inner container">
         <Link to="/" className="navbar-logo">
-          <ProfilePhoto size="sm" animate={false} tilt={false} />
+          <img src="/images/jc-logo.png" alt="JC Logo" className="navbar-custom-logo" />
           <span className="navbar-logo-text">
-            <span className="gradient-text">J</span>enish.dev
+            <span style={{ color: 'var(--accent-red)' }}>J</span>ENISH CALEB
           </span>
         </Link>
 
@@ -52,7 +54,7 @@ export default function Navbar() {
                   <motion.div
                     className="navbar-link-indicator"
                     layoutId="nav-indicator"
-                    transition={{ type: 'spring', stiffness: 380, damping: 30 }}
+                    transition={{ type: 'spring', stiffness: 400, damping: 25 }}
                   />
                 )}
               </Link>
