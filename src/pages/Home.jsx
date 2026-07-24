@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { Play, Info, Linkedin, BrainCircuit, Code2, Cpu, Download } from 'lucide-react'
 import ProfilePhoto from '../components/ProfilePhoto'
+
 import './Home.css'
 
 const fadeUp = {
@@ -43,18 +44,9 @@ export default function Home() {
       transition={{ duration: 0.4 }}
       className="netflix-home"
     >
-      {/* Background cinematic particles & fog */}
-      <div className="particles-container">
-        <div className="fog-overlay" />
-        <div className="cinematic-glow-bg" />
-        {/* Floating background particles */}
-        <div className="particle particle-1" />
-        <div className="particle particle-2" />
-        <div className="particle particle-3" />
-      </div>
-
       {/* ===== HERO SECTION (Netflix Featured Banner style) ===== */}
       <section className="hero section">
+
         <div className="container hero-grid">
           {/* Left: Info */}
           <div className="hero-content">

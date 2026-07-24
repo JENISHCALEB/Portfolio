@@ -11,6 +11,28 @@
   padding-top: var(--nav-height);
   position: relative;
   overflow: hidden;
+  isolation: isolate;
+}
+
+/* ===== CANVAS ANIMATION BACKGROUND ===== */
+.hero-canvas-container {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  /* Slight right-side bias keeps animation behind text on desktop */
+}
+
+/* Radial vignette that blends the canvas into the page BG */
+.hero-canvas-fog {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    /* Dense black on left — hides canvas behind text */
+    linear-gradient(to right, #0B0B0B 0%, #0B0B0B 28%, rgba(11,11,11,0.55) 52%, rgba(11,11,11,0.08) 100%),
+    /* Top & bottom bleed into the page BG */
+    linear-gradient(to bottom, #0B0B0B 0%, transparent 15%, transparent 85%, #0B0B0B 100%);
 }
 
 .hero-grid {
@@ -144,50 +166,7 @@
   justify-content: center;
 }
 
-/* ===== CINEMATIC BACKGROUND GLOW & PARTICLES ===== */
-.cinematic-glow-bg {
-  position: absolute;
-  top: 10%;
-  right: -5%;
-  width: 600px;
-  height: 600px;
-  background: radial-gradient(circle, rgba(229, 9, 20, 0.08) 0%, transparent 70%);
-  filter: blur(80px);
-  pointer-events: none;
-}
-
-.particle {
-  position: absolute;
-  border-radius: 50%;
-  background: rgba(229, 9, 20, 0.2);
-  filter: blur(1px);
-  animation: float 8s ease-in-out infinite;
-}
-
-.particle-1 {
-  width: 8px;
-  height: 8px;
-  top: 25%;
-  left: 15%;
-  animation-duration: 6s;
-}
-
-.particle-2 {
-  width: 12px;
-  height: 12px;
-  bottom: 30%;
-  left: 45%;
-  animation-duration: 9s;
-  background: rgba(255, 255, 255, 0.05);
-}
-
-.particle-3 {
-  width: 6px;
-  height: 6px;
-  top: 60%;
-  right: 20%;
-  animation-duration: 7s;
-}
+/* Old static particle CSS removed — replaced by HeroCanvas.jsx engine */
 
 /* ===== CATEGORIES / DISCIPLINES ===== */
 .disciplines-grid {
