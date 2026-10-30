@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import { Search, BrainCircuit, Code2, Smartphone, Cpu, FlaskConical, Info, Activity } from 'lucide-react'
+import { Search, BrainCircuit, Code2, Smartphone, Cpu, FlaskConical, Info, Activity, Workflow } from 'lucide-react'
 import HeroCanvas from '../components/HeroCanvas'
 import './Projects.css'
 
@@ -13,6 +13,19 @@ const categories = ['All', 'AI', 'Web', 'Mobile', 'Hardware']
    The Car Rental local path is replaced with a proper Unsplash URL.
 ----------------------------------------------------------------------- */
 const projects = [
+  {
+    title: 'ORDO – AI-Powered Workflow Dependency and Evidence Verification System',
+    description: 'AI-powered workflow automation platform for college event management, featuring task dependency tracking, evidence verification and intelligent coordination.',
+    tags: ['Python', 'FastAPI', 'Next.js', 'AI', 'RPA', 'PostgreSQL'],
+    category: 'AI',
+    icon: <Workflow size={24} />,
+    color: 'var(--accent-red)',
+    image: null,
+    bannerImage: '/images/ordo-banner.jpg',
+    fallbackGradient: 'linear-gradient(135deg, #b71c1c 0%, #5c060b 100%)',
+    fallbackEmoji: '⚡',
+    github: 'https://github.com/JENISHCALEB'
+  },
   {
     title: 'Aarogya Sahayak AI',
     description: 'AI-powered healthcare assistant for early symptom analysis and guidance.',
@@ -96,7 +109,7 @@ const projects = [
    ProjectCard — handles skeleton loading, error fallback, and hover effects
 ----------------------------------------------------------------------- */
 function ProjectCard({ project, index }) {
-  const [imgState, setImgState] = useState('loading') // 'loading' | 'loaded' | 'error'
+  const [imgState, setImgState] = useState(project.image ? 'loading' : 'fallback')
 
   return (
     <motion.div
@@ -114,7 +127,7 @@ function ProjectCard({ project, index }) {
         )}
 
         {/* Actual image — hidden until loaded, replaced by gradient on error */}
-        {imgState !== 'error' ? (
+        {project.image && imgState !== 'error' && imgState !== 'fallback' ? (
           <img
             src={project.image}
             alt={project.title}
@@ -125,7 +138,7 @@ function ProjectCard({ project, index }) {
             onError={() => setImgState('error')}
           />
         ) : (
-          /* Beautiful gradient fallback when image fails */
+          /* Beautiful gradient fallback when image fails or not provided */
           <div
             className="card-fallback-gradient"
             style={{ background: project.fallbackGradient }}
@@ -161,14 +174,15 @@ function ProjectCard({ project, index }) {
    BannerImage — same skeleton + fallback for the featured hero banner
 ----------------------------------------------------------------------- */
 function BannerImage({ project }) {
-  const [imgState, setImgState] = useState('loading')
+  const bannerSrc = project.bannerImage || project.image
+  const [imgState, setImgState] = useState(bannerSrc ? 'loading' : 'fallback')
 
   return (
     <div className="banner-bg-wrapper">
       {imgState === 'loading' && <div className="banner-skeleton" aria-hidden="true" />}
-      {imgState !== 'error' ? (
+      {bannerSrc && imgState !== 'error' && imgState !== 'fallback' ? (
         <img
-          src={project.image}
+          src={bannerSrc}
           alt={project.title}
           className={`banner-bg-img ${imgState === 'loaded' ? 'img-visible' : 'img-hidden'}`}
           loading="eager"
@@ -198,10 +212,15 @@ export default function Projects() {
   const [activeCategory, setActiveCategory] = useState('All')
 
   const filtered = projects.filter((p) => {
+    const query = search.toLowerCase()
     const matchSearch =
-      p.title.toLowerCase().includes(search.toLowerCase()) ||
-      p.description.toLowerCase().includes(search.toLowerCase())
-    const matchCategory = activeCategory === 'All' || p.category === activeCategory
+      p.title.toLowerCase().includes(query) ||
+      p.description.toLowerCase().includes(query) ||
+      p.tags.some((t) => t.toLowerCase().includes(query))
+    const matchCategory =
+      activeCategory === 'All' ||
+      p.category === activeCategory ||
+      p.tags.includes(activeCategory)
     return matchSearch && matchCategory
   })
 

@@ -63,7 +63,7 @@ export default function Home() {
             <motion.div className="hero-badges" variants={fadeUp} initial="hidden" animate="visible" custom={2.5}>
               <span className="glass-badge">B.Tech CSE @ Karunya Institute</span>
               <span className="glass-badge">AI & Machine Learning</span>
-              <span className="glass-badge">Azure & AWS Certified</span>
+              <span className="glass-badge">Oracle, Azure & AWS Certified</span>
               <span className="glass-badge">Tuticorin, India</span>
             </motion.div>
             <motion.p className="hero-tagline" variants={fadeUp} initial="hidden" animate="visible" custom={3}>

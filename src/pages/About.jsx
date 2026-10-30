@@ -134,7 +134,7 @@ export default function About() {
                 <motion.div className="summary-card cinematic-card" whileHover={{ scale: 1.05 }} transition={{ type: "spring", stiffness: 300 }}>
                   <Award size={20} className="summary-icon" />
                   <h4>Certifications</h4>
-                  <p>Azure & AWS</p>
+                  <p>Oracle, Azure & AWS</p>
                 </motion.div>
               </div>
             </motion.div>

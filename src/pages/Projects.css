@@ -35,19 +35,20 @@
 
 .featured-banner {
   position: relative;
-  height: 70vh;
-  min-height: 500px;
+  height: 80vh;
+  min-height: 560px;
   display: flex;
   align-items: center;
   overflow: hidden;
   margin-top: calc(var(--nav-height) * -1);
+  background: #0B0B0B;
 }
 
 .banner-bg-wrapper {
   position: absolute;
   inset: 0;
   z-index: 0;
-  opacity: 0.35; /* Semi-transparent so canvas animation flows throughout the entire top banner */
+  opacity: 1;
   pointer-events: none;
 }
 
@@ -55,7 +56,7 @@
 .banner-skeleton {
   position: absolute;
   inset: 0;
-  background: linear-gradient(90deg, #1a1a1a 25%, #2a2a2a 50%, #1a1a1a 75%);
+  background: linear-gradient(90deg, #141414 25%, #222222 50%, #141414 75%);
   background-size: 200% 100%;
   animation: shimmer 1.6s infinite linear;
 }
@@ -64,7 +65,8 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  filter: brightness(0.5) contrast(1.1);
+  object-position: 70% center;
+  filter: brightness(0.7) contrast(1.15) saturate(1.1);
   transition: opacity 0.5s ease;
 }
 
@@ -75,7 +77,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  filter: brightness(0.55);
+  filter: brightness(0.65);
 }
 
 .banner-fallback-emoji {
@@ -88,8 +90,10 @@
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(to right, rgba(11,11,11,0.7) 20%, rgba(11,11,11,0.3) 55%, transparent 100%),
-    linear-gradient(to top, rgba(11,11,11,0.6) 5%, transparent 40%);
+    linear-gradient(to right, #0B0B0B 0%, rgba(11, 11, 11, 0.95) 25%, rgba(11, 11, 11, 0.65) 50%, rgba(11, 11, 11, 0.2) 75%, transparent 100%),
+    linear-gradient(to top, #0B0B0B 0%, rgba(11, 11, 11, 0.95) 10%, rgba(11, 11, 11, 0.4) 30%, transparent 55%),
+    linear-gradient(to bottom, rgba(11, 11, 11, 0.85) 0%, transparent 20%),
+    radial-gradient(circle at 75% 35%, rgba(229, 9, 20, 0.22) 0%, transparent 60%);
 }
 
 .banner-content-wrapper {

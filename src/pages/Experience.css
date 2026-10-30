@@ -1,14 +1,139 @@
 .experience-page {
   min-height: 100vh;
-  padding-top: var(--nav-height);
+  padding-top: calc(var(--nav-height) + 40px);
+  padding-bottom: 100px;
 }
 
+/* ══════════════════════════════════════════════
+   CONNECTED EDUCATION SECTION (School -> Karunya)
+   ══════════════════════════════════════════════ */
+.education-connected-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  margin-top: 3rem;
+  margin-bottom: 3.5rem;
+  max-width: 850px;
+  position: relative;
+}
+
+.edu-timeline-item {
+  display: flex;
+  gap: 28px;
+  align-items: stretch;
+  position: relative;
+}
+
+.edu-timeline-track {
+  width: 72px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
+  position: relative;
+}
+
+/* Outer Round */
+.edu-node-outer {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(229, 9, 20, 0.18) 0%, rgba(20, 20, 20, 0.95) 75%);
+  border: 2px solid var(--accent-red);
+  box-shadow:
+    0 0 24px rgba(229, 9, 20, 0.4),
+    inset 0 0 12px rgba(229, 9, 20, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 2;
+  flex-shrink: 0;
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.edu-timeline-item:hover .edu-node-outer {
+  transform: scale(1.08);
+  box-shadow:
+    0 0 35px rgba(229, 9, 20, 0.65),
+    inset 0 0 16px rgba(229, 9, 20, 0.4);
+}
+
+/* Inner Round (contains the logo inside the outer round) */
+.edu-node-inner {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.45);
+  overflow: hidden;
+}
+
+.edu-node-logo {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+/* Connecting line running ONLY between School and Karunya */
+.edu-connector-line {
+  position: absolute;
+  top: 72px;
+  bottom: -2.5rem; /* Connects across the gap to the Karunya node */
+  width: 3px;
+  left: calc(50% - 1.5px);
+  background: linear-gradient(
+    180deg,
+    var(--accent-red) 0%,
+    rgba(229, 9, 20, 0.6) 50%,
+    var(--accent-red) 100%
+  );
+  box-shadow: 0 0 12px rgba(229, 9, 20, 0.5);
+  z-index: 1;
+}
+
+/* Animated subtle pulse running down the connector */
+.edu-connector-pulse {
+  position: absolute;
+  width: 100%;
+  height: 35px;
+  background: linear-gradient(180deg, transparent, #ffffff, transparent);
+  animation: connectorPulse 3s infinite linear;
+}
+
+@keyframes connectorPulse {
+  0% { top: 0; opacity: 0; }
+  50% { opacity: 0.9; }
+  100% { top: 100%; opacity: 0; }
+}
+
+.experience-type-pill {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  padding: 3px 10px;
+  border-radius: 12px;
+  background: rgba(229, 9, 20, 0.12);
+  color: var(--accent-red);
+  border: 1px solid rgba(229, 9, 20, 0.3);
+  margin-bottom: 8px;
+}
+
+/* ══════════════════════════════════════════════
+   ORIGINAL INTERNSHIP / EXPERIENCE TIMELINE
+   ══════════════════════════════════════════════ */
 .experience-timeline {
   display: flex;
   flex-direction: column;
   gap: 2rem;
-  margin-top: 3rem;
-  max-width: 800px;
+  margin-top: 1rem;
+  max-width: 850px;
 }
 
 .experience-card {
@@ -17,6 +142,9 @@
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
   transition: all 0.3s ease;
   border-left: 4px solid var(--accent-red);
+  background: rgba(20, 20, 20, 0.6);
+  backdrop-filter: blur(12px);
+  border-radius: var(--radius-sm);
 }
 
 .experience-card:hover {
@@ -117,6 +245,29 @@
 }
 
 @media (max-width: 768px) {
+  .edu-timeline-item {
+    gap: 16px;
+  }
+  
+  .edu-timeline-track {
+    width: 56px;
+  }
+  
+  .edu-node-outer {
+    width: 56px;
+    height: 56px;
+  }
+  
+  .edu-node-inner {
+    width: 40px;
+    height: 40px;
+    padding: 4px;
+  }
+  
+  .edu-connector-line {
+    top: 56px;
+  }
+  
   .experience-card {
     padding: 1.5rem;
   }
@@ -132,3 +283,5 @@
     gap: 0.75rem;
   }
 }
+
+

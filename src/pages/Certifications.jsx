@@ -6,12 +6,30 @@ import './Certifications.css'
 /* ── CERT DATA ── */
 const certs = [
   {
+    name: 'Agentic AI Certified Foundations Associate',
+    org: 'Oracle',
+    issued: 'October 2026',
+    category: 'Agentic AI',
+    categoryColor: '#C74634',
+    description: 'A practical, build-it-yourself introduction to AI agents from first principles. Built agents from scratch using LangChain, OpenAI Agents SDK, and real MCP servers, deploying in production using OCI Enterprise AI Agents and Oracle AI Database.',
+    skills: [
+      'Core AI Agent Concepts',
+      'LangChain',
+      'Model Context Protocol (MCP)',
+      'OpenAI Agents SDK',
+      'OCI Enterprise AI Agents',
+      'Oracle AI Database',
+    ],
+    logo: '/images/oracle-logo.svg',
+  },
+  {
     name: 'Microsoft Azure Fundamentals (AZ-900)',
     org: 'Microsoft',
     issued: 'April 2026',
     category: 'Cloud',
     categoryColor: '#0078D4',
     description: 'Validated foundational knowledge of Microsoft Azure, cloud concepts, Azure services, security, compliance, pricing, and support.',
+    skills: ['Azure Services', 'Cloud Architecture', 'Security & Compliance', 'Pricing & SLA'],
     logo: '/images/microsoft-logo.png',
   },
   {
@@ -21,6 +39,7 @@ const certs = [
     category: 'Cloud',
     categoryColor: '#FF9900',
     description: 'Completed AWS Cloud Practitioner Essentials covering cloud concepts, AWS core services, pricing, architecture, and security fundamentals.',
+    skills: ['AWS Core Services', 'Cloud Architecture', 'Security Fundamentals'],
     logo: '/images/aws-logo.png',
   },
   {
@@ -30,6 +49,7 @@ const certs = [
     category: 'Data',
     categoryColor: '#00B4D8',
     description: 'Learned foundational data concepts including relational and non-relational databases, analytics, visualization, and Azure data services.',
+    skills: ['Relational Data', 'NoSQL', 'Analytics & Power BI'],
     logo: '/images/microsoft-logo.png',
   },
   {
@@ -39,6 +59,7 @@ const certs = [
     category: 'Cyber Security',
     categoryColor: '#BE0000',
     description: 'Covered enterprise security principles, risk management, cyber defense, authentication, and security best practices.',
+    skills: ['Risk Management', 'Cyber Defense', 'Authentication'],
     logo: '/images/ibm-logo.png',
   },
   {
@@ -48,6 +69,7 @@ const certs = [
     category: 'Networking',
     categoryColor: '#1BA0D7',
     description: 'Developed practical knowledge of networking, cybersecurity concepts, and enterprise communication fundamentals.',
+    skills: ['Networking Protocols', 'Enterprise Communication', 'Cybersecurity Basics'],
     logo: 'https://cdn.simpleicons.org/cisco/1BA0D7',
   },
   {
@@ -57,6 +79,7 @@ const certs = [
     category: 'IoT',
     categoryColor: '#007CC3',
     description: 'Introduced IoT architecture, smart devices, sensors, communication protocols, and connected systems.',
+    skills: ['IoT Architecture', 'Sensors & Smart Devices', 'Connected Systems'],
     logo: 'https://cdn.simpleicons.org/infosys/007CC3',
   },
   {
@@ -66,6 +89,7 @@ const certs = [
     category: 'Generative AI',
     categoryColor: '#34A853',
     description: 'Learned to use Gemini inside Google Workspace for AI-assisted productivity while understanding responsible AI practices.',
+    skills: ['Gemini AI', 'Workspace Automation', 'Responsible AI'],
     logo: '/images/google-logo.png',
   },
   {
@@ -75,6 +99,7 @@ const certs = [
     category: 'Artificial Intelligence',
     categoryColor: '#FBBC04',
     description: 'Explored generative AI fundamentals, LLMs, prompt engineering, AI applications, and modern machine learning concepts.',
+    skills: ['LLMs', 'Prompt Engineering', 'GenAI Concepts'],
     logo: '/images/google-logo.png',
   },
   {
@@ -84,6 +109,7 @@ const certs = [
     category: 'Cyber Security',
     categoryColor: '#A435F0',
     description: 'Studied ethical hacking basics, online privacy, malware protection, encryption, and network security principles.',
+    skills: ['Ethical Hacking', 'Malware Protection', 'Encryption & Privacy'],
     logo: 'https://cdn.simpleicons.org/udemy/A435F0',
   },
 ]
@@ -154,7 +180,7 @@ export default function Certifications() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3, duration: 0.5 }}
           >
-            Professional certifications earned from globally recognized organizations in Cloud Computing,
+            Professional certifications earned from globally recognized organizations in Agentic AI, Cloud Computing,
             Artificial Intelligence, Cybersecurity, Programming, and Emerging Technologies.
           </motion.p>
 
@@ -166,17 +192,17 @@ export default function Certifications() {
             transition={{ delay: 0.4, duration: 0.5 }}
           >
             <div className="cert-stat">
-              <span className="cert-stat-num"><Counter target={9} suffix="+" /></span>
+              <span className="cert-stat-num"><Counter target={certs.length} suffix="+" /></span>
               <span className="cert-stat-label">Professional Certifications</span>
             </div>
             <div className="cert-stat-divider" />
             <div className="cert-stat">
-              <span className="cert-stat-num"><Counter target={7} suffix="+" /></span>
+              <span className="cert-stat-num"><Counter target={8} suffix="+" /></span>
               <span className="cert-stat-label">Global Organizations</span>
             </div>
             <div className="cert-stat-divider" />
             <div className="cert-stat">
-              <span className="cert-stat-domains">Cloud • AI • Security • IoT</span>
+              <span className="cert-stat-domains">Agentic AI • Cloud • Security • IoT</span>
             </div>
           </motion.div>
 
@@ -222,6 +248,13 @@ export default function Certifications() {
                     <span className="cert-issued">{cert.issued}</span>
                   </div>
                   <p className="cert-desc">{cert.description}</p>
+                  {cert.skills && cert.skills.length > 0 && (
+                    <div className="cert-skills">
+                      {cert.skills.map((skill, sIdx) => (
+                        <span key={sIdx} className="cert-skill-tag">{skill}</span>
+                      ))}
+                    </div>
+                  )}
                 </div>
               </motion.div>
             ))}

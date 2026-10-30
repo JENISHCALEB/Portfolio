@@ -134,9 +134,9 @@
   text-transform: uppercase;
   padding: 4px 10px;
   border-radius: 20px;
-  color: #E50914;
-  background: rgba(229, 9, 20, 0.12);
-  border: 1px solid rgba(229, 9, 20, 0.35);
+  color: var(--pill-color, #E50914);
+  background: color-mix(in srgb, var(--pill-color, #E50914) 12%, transparent);
+  border: 1px solid color-mix(in srgb, var(--pill-color, #E50914) 35%, transparent);
 }
 
 /* ── CARD BODY ── */
@@ -189,6 +189,33 @@
   color: var(--text-muted);
   line-height: 1.65;
   margin-top: 4px;
+}
+
+/* ── SKILLS TAGS ── */
+.cert-skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: auto;
+  padding-top: 14px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.cert-skill-tag {
+  font-size: 0.72rem;
+  font-weight: 500;
+  padding: 3px 8px;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--text-secondary);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: all 0.2s ease;
+}
+
+.cert-skill-tag:hover {
+  background: rgba(229, 9, 20, 0.1);
+  border-color: rgba(229, 9, 20, 0.3);
+  color: #fff;
 }
 
 /* ════════════════════════════════════
